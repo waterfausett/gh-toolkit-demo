@@ -2,7 +2,8 @@
 export type Money = { amount: number; currency: string };
 
 export const money = (amount: number, currency = "USD"): Money => {
-  if (!Number.isInteger(amount)) throw new RangeError(`Amount must be whole minor units, got ${amount}`);
+  if (!Number.isInteger(amount))
+    throw new RangeError(`Amount must be whole minor units, got ${amount}`);
   return { amount, currency };
 };
 

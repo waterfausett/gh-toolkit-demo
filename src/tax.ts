@@ -16,6 +16,9 @@ export const ruleFor = (region: string): TaxRule => {
   return rule;
 };
 
-/** Tax owed on a net amount, or the tax portion of a gross amount for inclusive regions. */
+/**
+ * Tax owed on a net amount, or the tax portion of a gross amount for inclusive regions.
+ * Prorated charges use the same rule as the plan they belong to.
+ */
 export const taxOn = (amount: Money, rule: TaxRule): Money =>
   rule.inclusive ? multiply(amount, rule.rate / (1 + rule.rate)) : multiply(amount, rule.rate);
