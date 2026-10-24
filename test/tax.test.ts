@@ -11,6 +11,11 @@ describe("tax", () => {
     expect(taxOn(money(12000, "GBP"), ruleFor("GB")).amount).toBe(2000);
   });
 
+  it("knows the Washington and Texas base rates", () => {
+    expect(ruleFor("US-WA").rate).toBe(0.065);
+    expect(ruleFor("US-TX").rate).toBe(0.0625);
+  });
+
   it("throws for unknown regions", () => {
     expect(() => ruleFor("MARS")).toThrow(/No tax rule/);
   });
