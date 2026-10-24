@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { formatMoney } from "../src/format";
+import { formatMoney } from "../src/formatting";
 import { totals, type Invoice } from "../src/invoice";
 import { money } from "../src/money";
 
