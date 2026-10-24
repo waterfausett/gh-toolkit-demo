@@ -21,7 +21,9 @@ export const totals = (invoice: Invoice): Totals => {
   const subtotal = sum(invoice.items.map(lineTotal), invoice.currency);
   const discounted = applyDiscount(subtotal, invoice.discount);
   const rule = ruleFor(invoice.region);
-  const tax = taxOn(discounted, rule);
+  const tax = rule.inclusive && !invoice.discount
+    ? sum(invoice.items.map((item) => taxOn(lineTotal(item), rule)), invoice.currency)
+    : taxOn(discounted, rule);
   const total = rule.inclusive ? discounted : add(discounted, tax);
   return { subtotal, discounted, tax, total };
 };
