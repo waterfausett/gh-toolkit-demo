@@ -52,8 +52,8 @@ export const prorate = (change: PlanChange): Proration => {
 /** Smallest net we bother invoicing; anything below rolls into the next invoice. */
 export const MIN_PRORATION = 50;
 
-export const shouldInvoiceNow = (p: Proration): boolean => {
+export const shouldInvoiceNow = (p: Proration, minimum = MIN_PRORATION): boolean => {
   if (p.net.amount < 0) return false;
-  if (p.net.amount < MIN_PRORATION) return false;
+  if (p.net.amount < minimum) return false;
   return p.daysRemaining > 0;
 };

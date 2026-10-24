@@ -22,6 +22,12 @@ describe("prorate", () => {
     expect(p.daysRemaining).toBe(15);
   });
 
+  it("returns nothing once the period has ended", () => {
+    const p = prorate({ ...period, fromPrice: money(4900), toPrice: money(9900), changedAt: new Date("2026-11-02") });
+    expect(p.net.amount).toBe(0);
+    expect(p.daysRemaining).toBe(0);
+  });
+
   it("produces a negative net on downgrade", () => {
     const p = prorate({ ...period, fromPrice: money(9900), toPrice: money(4900), changedAt: new Date("2026-10-16") });
     expect(p.net.amount).toBe(-2500);
