@@ -14,4 +14,8 @@ totals({
 });
 ```
 
+## Discounts and tax
+
+Discounts apply to the subtotal before tax. Percent discounts are rounded to the cent; fixed discounts never take a total below zero. In VAT-inclusive regions (GB, DE) the total already contains the tax, so discounting reduces both.
+
 > This repo is the demo fixture for [gh-toolkit](https://github.com/waterfausett/gh-toolkit). Its pull requests are staged to show the userscript's features in screenshots.
